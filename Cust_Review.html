@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Review</title>
+    <link rel="stylesheet" href="styles9.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+
+</head>
+<body>
+    <header class="py-4">
+        <div class="container text-center">
+            <h1>Share Your Experience</h1>
+            <p class="lead">Your feedback helps us improve!</p>
+        </div>
+    </header>
+    <main class="container mt-5">
+        <h2 class="text-center mb-4">Submit Your Review</h2>
+        <form id="reviewForm">
+            <div class="mb-4">
+                <label for="name" class="form-label">Your Name</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    class="form-control" 
+                    placeholder="Enter your full name" 
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="review" class="form-label">Your Review</label>
+                <textarea 
+                    id="review" 
+                    class="form-control" 
+                    placeholder="Write your review here" 
+                    rows="4" 
+                    required>
+                </textarea>
+            </div>
+            <div class="mb-4">
+                <label for="rating" class="form-label">Rating</label>
+                <select id="rating" class="form-select" required>
+                    <option value="" disabled selected>Select a rating</option>
+                    <option value="5">5 - Excellent</option>
+                    <option value="4">4 - Good</option>
+                    <option value="3">3 - Average</option>
+                    <option value="2">2 - Poor</option>
+                    <option value="1">1 - Very Poor</option>
+                </select>
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </div>
+        </form>
+    </main>
+    <footer class="text-center py-3 mt-5 bg-light">
+        <p class="mb-0">© 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reviewForm = document.getElementById('reviewForm');
+            
+            reviewForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const review = document.getElementById('review').value.trim();
+                const rating = document.getElementById('rating').value;
+                
+                // Validate inputs
+                if (!name || !review || !rating) {
+                    alert('Please fill out all fields.');
+                    return;
+                }
+
+                // Save review to localStorage
+                const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+                reviews.push({ name, review, rating });
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+
+                // Redirect to Rest_Review.html
+                window.location.href = 'Rest_Review.html';
+            });
+        });
+    </script>
+</body>
+</html>

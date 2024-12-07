@@ -1,0 +1,244 @@
+/* ========================================================================
+   Global Styles
+   ======================================================================== */
+   body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;  /* Soft background for a clean look */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    color: #333;
+}
+
+/* ========================================================================
+   Heading Styles
+   ======================================================================== */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2d2d2d;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+/* ========================================================================
+   Bill Summary Section Styles
+   ======================================================================== */
+#bill-summary {
+    width: 90%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+#bill-summary p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+#bill-summary p span {
+    font-weight: bold;
+    color: #2a9d8f;
+}
+
+/* ========================================================================
+   Table Styles (Bill Details)
+   ======================================================================== */
+table {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+table th,
+table td {
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+table td {
+    background-color: #f9f9f9;
+}
+
+/* ========================================================================
+   Responsive Table Styles
+   ======================================================================== */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    table th, table td {
+        padding: 12px;
+    }
+
+    #bill-summary {
+        padding: 15px;
+    }
+}
+
+/* ========================================================================
+   Buttons Styles (General Buttons)
+   ======================================================================== */
+button {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 3px rgba(76, 175, 80, 0.7);
+}
+
+/* ========================================================================
+   Scrollable Bill Area
+   ======================================================================== */
+#bill-summary {
+    max-height: 600px;
+    overflow-y: auto;  /* Makes the bill summary scrollable */
+    padding-right: 20px;
+}
+
+/* ========================================================================
+   Footer Section Styles
+   ======================================================================== */
+footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+/* ========================================================================
+   Animations
+   ======================================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================================================
+   Bill Items Highlighted Sections (Optional)
+   ======================================================================== */
+#totalAmount,
+#gstAmount,
+#finalAmount {
+    font-weight: bold;
+    color: #2a9d8f;
+    font-size: 1.3rem;
+}
+
+.bill-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.bill-item:last-child {
+    border-bottom: none;
+}
+
+.bill-item span {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* ========================================================================
+   Responsive Design Enhancements
+   ======================================================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    #bill-summary {
+        padding: 20px;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+}
+
+/* ========================================================================
+   Larger Screens (Desktop)
+   ======================================================================== */
+@media (min-width: 1024px) {
+    body {
+        padding: 40px;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    table {
+        width: 80%;
+        font-size: 1.2rem;
+    }
+
+    button {
+        font-size: 1.3rem;
+        padding: 14px 28px;
+    }
+}

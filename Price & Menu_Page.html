@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price & Menu - Alibaba Restaurant</title>
+    <!-- Bootstrap CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Star Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles4.css">
+
+  
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <h1 class="display-4 font-weight-bold">Alibaba Restaurant</h1>
+            <nav class="mt-3">
+                <button class="btn btn-secondary mx-2" onclick="window.location.href='SecurityPage.html'">Security</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container py-5">
+        <section class="menu-section">
+            <div class="menu-header text-center mb-4">
+                <h2 class="text-primary"><u><b>Menu & Prices</b></u></h2>
+                <p><b>Explore our delicious menu and pricing.</b></p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Menu Item 1: Chicken Biriyani -->
+                <div class="col-md-4">
+                    <div class="menu-item card shadow-sm p-3 text-center">
+                        <img src="images/Chicken_Biriyani.jpg" alt="Chicken Biriyani" class="card-img-top rounded-3" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Chicken Biriyani</h5>
+                            <p class="card-text"></p>
+                            <p class="price text-danger font-weight-bold">₹100</p>
+                            <div class="rating-container text-warning mb-2">
+                                <p class="mb-1">Rating:</p>
+                                <span id="stars1" class="rating"></span>
+                                <br>
+                                <span class="rating-value text-muted">(2.5)</span> <!-- Numeric rating -->
+                            </div>
+
+                            <div class="quantity-container d-flex justify-content-center align-items-center mb-3">
+                                <button class="btn btn-outline-primary" onclick="decreaseQuantity(1)">-</button>
+                                <input type="number" id="quantity1" value="0" min="0" max="5" class="quantity-input mx-2" onchange="updatePrice()">
+                                <button class="btn btn-outline-primary" onclick="increaseQuantity(1)">+</button>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="addToCart(1)">Add to Cart</button>
+                            <span class="total-amount d-block mt-2" id="total1">Total: ₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2: Mutton Biriyani -->
+                <div class="col-md-4">
+                    <div class="menu-item card shadow-sm p-3 text-center">
+                        <img src="images/Mutton_Biriyani.jpg" alt="Mutton Biriyani" class="card-img-top rounded-3" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Mutton Biriyani</h5>
+                            <p class="card-text"></p>
+                            <p class="price text-danger font-weight-bold">₹200</p>
+                            <div class="rating-container text-warning mb-2">
+                                <p class="mb-1">Rating:</p>
+                                <span id="stars2" class="rating"></span>
+                                <br>
+                                <span class="rating-value text-muted">(4.0)</span> <!-- Numeric rating -->
+                            </div>
+                            <div class="quantity-container d-flex justify-content-center align-items-center mb-3">
+                                <button class="btn btn-outline-primary" onclick="decreaseQuantity(2)">-</button>
+                                <input type="number" id="quantity2" value="0" min="0" max="5" class="quantity-input mx-2" onchange="updatePrice()">
+                                <button class="btn btn-outline-primary" onclick="increaseQuantity(2)">+</button>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="addToCart(2)">Add to Cart</button>
+                            <span class="total-amount d-block mt-2" id="total2">Total: ₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3: Chicken Chap -->
+                <div class="col-md-4">
+                    <div class="menu-item card shadow-sm p-3 text-center">
+                        <img src="images/Chicken_Chap.jpg" alt="Chicken Chap" class="card-img-top rounded-3" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Chicken Chap</h5>
+                            <p class="card-text"></p>
+                            <p class="price text-danger font-weight-bold">₹120</p>
+                            <div class="rating-container text-warning mb-2">
+                                <p class="mb-1">Rating:</p>
+                                <span id="stars3" class="rating"></span>
+                                <br>
+                                <span class="rating-value text-muted">(3.5)</span> <!-- Numeric rating -->
+                            </div>
+                            <div class="quantity-container d-flex justify-content-center align-items-center mb-3">
+                                <button class="btn btn-outline-primary" onclick="decreaseQuantity(3)">-</button>
+                                <input type="number" id="quantity3" value="0" min="0" max="5" class="quantity-input mx-2" onchange="updatePrice()">
+                                <button class="btn btn-outline-primary" onclick="increaseQuantity(3)">+</button>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="addToCart(3)">Add to Cart</button>
+                            <span class="total-amount d-block mt-2" onclick="">Total: ₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4: Mutton Chap -->
+                <div class="col-md-4">
+                    <div class="menu-item card shadow-sm p-3 text-center">
+                        <img src="images/Mutton_Chap.jpg" alt="Mutton Chap" class="card-img-top rounded-3" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Mutton Chap</h5>
+                            <p class="card-text">A flavorful, spicy, and tender mutton dish.</p>
+                            <p class="price text-danger font-weight-bold">₹180</p>
+                            <div class="rating-container text-warning mb-2">
+                                <p class="mb-1">Rating:</p>
+                                <span id="stars4" class="rating"></span>
+                                <br>
+                                <span class="rating-value text-muted">(3.5)</span> <!-- Numeric rating -->
+                            </div>
+                            <div class="quantity-container d-flex justify-content-center align-items-center mb-3">
+                                <button class="btn btn-outline-primary" onclick="decreaseQuantity(4)">-</button>
+                                <input type="number" id="quantity4" value="0" min="0" max="5" class="quantity-input mx-2" onchange="updatePrice()">
+                                <button class="btn btn-outline-primary" onclick="increaseQuantity(4)">+</button>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="addToCart(4)">Add to Cart</button>
+                            <span class="total-amount d-block mt-2" id="total4">Total: ₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 5: Murg Masalam -->
+                <div class="col-md-4">
+                    <div class="menu-item card shadow-sm p-3 text-center">
+                        <img src="images/Murg_Masala.jpg" alt="Murg Masalam" class="card-img-top rounded-3" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">Murg Masalam</h5>
+                            <p class="card-text">A rich and aromatic chicken dish with a blend of spices.</p>
+                            <p class="price text-danger font-weight-bold">₹160</p>
+                            <div class="rating-container text-warning mb-2">
+                                <p class="mb-1">Rating:</p>
+                                <span id="stars5" class="rating"></span>
+                                <br>
+                                <span class="rating-value text-muted">(4.0)</span> <!-- Numeric rating -->
+                            </div>
+                            <div class="quantity-container d-flex justify-content-center align-items-center mb-3">
+                                <button class="btn btn-outline-primary" onclick="decreaseQuantity(5)">-</button>
+                                <input type="number" id="quantity5" value="0" min="0" max="5" class="quantity-input mx-2" onchange="updatePrice()">
+                                <button class="btn btn-outline-primary" onclick="increaseQuantity(5)">+</button>
+                            </div>
+                            <button class="btn btn-success w-100" onclick="addToCart(5)">Add to Cart</button>
+                            <span class="total-amount d-block mt-2" id="total5">Total: ₹0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 6: Mutton Liver Kasha -->
+<div class="col-md-4">
+    <div class="menu-item card shadow-sm p-3 text-center">
+        <img src="images/Mutton_Liver_Kasha.jpg" alt="Mutton Liver Kasha" class="card-img-top rounded-3" style="height: 250px; object-fit: cover;">
+        <div class="card-body">
+            <h5 class="card-title">Mutton Liver Kasha</h5>
+            <p class="card-text">A delicious mutton liver curry with aromatic spices.</p>
+            <p class="price text-danger font-weight-bold">₹220</p>
+            <div class="rating-container text-warning mb-2">
+                <p class="mb-1">Rating:</p>
+                <span id="stars6" class="rating"></span>
+                <br>
+                <span class="rating-value text-muted">(4.5)</span> <!-- Numeric rating -->
+            </div>
+            <div class="quantity-container d-flex justify-content-center align-items-center mb-3">
+                <button class="btn btn-outline-primary" onclick="decreaseQuantity(6)">-</button>
+                <input type="number" id="quantity6" value="0" min="0" max="5" class="quantity-input mx-2" onchange="updateTotal(6)">
+                <button class="btn btn-outline-primary" onclick="increaseQuantity(6)">+</button>
+            </div>
+            <button class="btn btn-success w-100" onclick="addToCart(6)">Add to Cart</button>
+            <span class="total-amount d-block mt-2" id="total6">Total: ₹0</span>
+           </div>
+        </div>
+    </div>
+
+    <!-- Button to navigate to Bill Page -->
+    <div class="d-flex justify-content-center mt-5">
+        <button class="btn btn-warning btn-lg" onclick="goToBillPage()">Go to Bill Page</button>
+    </div>
+    </section>
+</main>
+
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 Alibaba Restaurant. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap & FontAwesome Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Initialize an object to keep track of item quantities and prices
+        const prices = {
+            1: { name: 'Chicken Biriyani', price: 100, rating: 2.5 },
+            2: { name: 'Mutton Biriyani', price: 200, rating: 4.0 },
+            3: { name: 'Chicken Chap', price: 120, rating: 3.5 },
+            4: { name: 'Mutton Chap', price: 180, rating: 3.5 },
+            5: { name: 'Murg Masalam', price: 160, rating: 4.0 },
+            6: { name: 'Mutton Liver Kasha', price: 220, rating: 4.5 }
+        };
+
+        // Function to display stars based on rating
+        function displayStars(rating, id) {
+            let fullStars = Math.floor(rating);
+            let halfStars = Math.floor(rating % 1);
+            let emptyStars = 5 - fullStars - halfStars;
+
+            let stars = '';
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            if (halfStars) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            document.getElementById(id).innerHTML = stars;
+        }
+        function renderStars() {
+    const ratingData = [
+        { id: 1, name: 'Chicken Biriyani', price: 100,rating: 2.5 },
+        { id: 2, name: 'Mutton Biriyani', price: 200,rating: 4.0 },
+        { id: 3, name: 'Chicken Chap', price: 120,rating: 3.5 },
+        { id: 4, name: 'Mutton Chap', price: 180,rating: 3.5 },
+        { id: 5, name: 'Murg Masalam', price: 160,rating: 4.0 },
+        { id: 6, name: 'Mutton Liver Kasha', price: 220,rating: 4.5 }
+    ];
+
+    ratingData.forEach(item => {
+        const starsContainer = document.getElementById(`stars${item.id}`);
+        const fullStars = Math.floor(item.rating); // Full stars
+        const halfStar = item.rating % 1 !== 0; // Check for half star
+        const emptyStars = 5 - fullStars - (halfStar ? 1 : 0); // Remaining empty stars
+
+        // Add full stars
+        for (let i = 0; i < fullStars; i++) {
+            starsContainer.innerHTML += '<i class="fas fa-star"></i>';
+        }
+
+        // Add half star if applicable
+        if (halfStar) {
+            starsContainer.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+        }
+
+        // Add empty stars
+        for (let i = 0; i < emptyStars; i++) {
+            starsContainer.innerHTML += '<i class="far fa-star"></i>';
+        }
+    });
+}
+
+// Call the function after DOM is loaded
+document.addEventListener("DOMContentLoaded", renderStars);
+
+// Initialize an object to keep track of item quantities and prices
+const menuItems = {
+    1: { name: 'Chicken Biriyani', price: 100, quantity: 0, total: 0 },
+    2: { name: 'Mutton Biriyani', price: 200, quantity: 0, total: 0 },
+    3: { name: 'Chicken Chap', price: 120, quantity: 0, total: 0 },
+    4: { name: 'Mutton Chap', price: 180, quantity: 0, total: 0 },
+    5: { name: 'Murg Masalam', price: 160, quantity: 0, total: 0 },
+    6: { name: 'Mutton Liver Kasha', price: 220, quantity: 0, total: 0 }
+};
+
+// Function to update the total price and quantity
+function updateTotal(itemId) {
+    const quantityInput = document.getElementById(`quantity${itemId}`);
+    const totalDisplay = document.getElementById(`total${itemId}`);
+    const quantity = parseInt(quantityInput.value) || 0;
+
+    menuItems[itemId].quantity = quantity;
+    menuItems[itemId].total = menuItems[itemId].price * quantity;
+
+    totalDisplay.textContent = `Total: ₹${menuItems[itemId].total}`;
+}
+
+// Function to increase quantity
+function increaseQuantity(itemId) {
+    const quantityInput = document.getElementById(`quantity${itemId}`);
+    if (parseInt(quantityInput.value) < 5) {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        updateTotal(itemId);
+    }
+}
+
+// Function to decrease quantity
+function decreaseQuantity(itemId) {
+    const quantityInput = document.getElementById(`quantity${itemId}`);
+    if (parseInt(quantityInput.value) > 0) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+        updateTotal(itemId);
+    }
+}
+
+// Function to add an item to the cart
+function addToCart(itemId) {
+    const item = menuItems[itemId];
+    const quantityInput = document.getElementById(`quantity${itemId}`);
+    const itemQuantity = parseInt(quantityInput.value);
+
+    if (itemQuantity > 0) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItem = cart.find(cartItem => cartItem.itemId === itemId);
+
+        if (existingItem) {
+            // Update quantity if item already exists in cart
+            existingItem.itemQuantity += itemQuantity;
+        } else {
+            // Add new item to cart
+            cart.push({
+                itemId: itemId,
+                itemName: item.name,
+                itemPrice: item.price,
+                itemQuantity: itemQuantity
+            });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Show an alert with item details
+        alert(`${itemQuantity} x ${item.name} added to cart!`);
+
+        // Redirect to the cart page
+        window.location.href = 'CartPage.html';
+    } else {
+        alert('Please select a valid quantity.');
+    }
+}
+
+// Attach event listeners for quantity changes dynamically
+document.addEventListener('DOMContentLoaded', () => {
+    for (let itemId in menuItems) {
+        document
+            .getElementById(`quantity${itemId}`)
+            .addEventListener('change', () => updateTotal(itemId));
+    }
+});
+// Function to navigate to Bill Page
+function goToBillPage() {
+    // Calculate total amount and GST
+    let totalAmount = 0;
+    let gstAmount = 0;
+
+    Object.values(menuItems).forEach(item => {
+        totalAmount += item.total;
+    });
+
+    // Apply 18% GST
+    gstAmount = totalAmount * 0.18; 
+
+    // Prepare the final bill data object
+    const billData = {
+        totalAmount: totalAmount,
+        gstAmount: gstAmount,
+        finalAmount: totalAmount + gstAmount
+    };
+
+    // Store the bill data in localStorage
+    localStorage.setItem('billData', JSON.stringify(billData));
+
+    // Redirect to the Bill Page
+    window.location.href = 'BillPage.html'; // Navigate to Bill Page
+}
+
+
+</script>
+</body>
+
+</html>

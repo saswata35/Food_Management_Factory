@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles7.css">
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+
+    <button onclick="goBackToMenu()">Go Back to Menu</button>
+
+    <br><br>
+    <!-- Button to navigate to Bill Page -->
+    <div class="d-flex justify-content-center mt-5">
+        <button class="btn btn-warning btn-lg" onclick="goToBillPage()">Go to Bill Page</button>
+    </div>
+
+    <script>
+        // Function to load and display cart items
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.innerHTML = `
+                        <p>Item Name: ${item.itemName}</p>
+                        <p>Item Price: ₹${item.itemPrice}</p>
+                        <p>Quantity: ${item.itemQuantity}</p>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartContainer.appendChild(itemDiv);
+                });
+            }
+        }
+
+        // Function to remove an item from the cart
+        function removeFromCart(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove item at index
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+            loadCart(); // Reload the cart display
+        }
+
+        // Load the cart when the page loads
+        window.onload = loadCart;
+
+        // Function to navigate back to the menu page
+        function goBackToMenu() {
+            window.location.href = 'Price & Menu_Page.html';
+        }
+
+        // Function to add items to cart
+        function addToCart(itemId, itemName, itemPrice) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the item already exists in the cart
+            const existingItem = cart.find(item => item.itemId === itemId);
+            if (existingItem) {
+                existingItem.itemQuantity += 1; // Increase quantity
+            } else {
+                // Add new item to cart
+                cart.push({
+                    itemId,
+                    itemName,
+                    itemPrice,
+                    itemQuantity: 1
+                });
+            }
+
+            // Save updated cart in localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Function to navigate to Bill Page
+        function goToBillPage() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const menuItems = {};
+
+            // Loop through cart items and store them in the menuItems object
+            cart.forEach(item => {
+                menuItems[item.itemId] = {
+                    name: item.itemName,
+                    price: item.itemPrice,
+                    quantity: item.itemQuantity,
+                    total: item.itemPrice * item.itemQuantity
+                };
+            });
+
+            // Store the cart data in localStorage for Bill Page
+            localStorage.setItem('cartData', JSON.stringify(menuItems));
+
+            // Redirect to Bill Page
+            window.location.href = 'BillPage.html';
+        }
+    </script>
+</body>
+</html>

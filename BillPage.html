@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Page</title>
+    <link rel="stylesheet" href="styles8.css">
+</head>
+<body>
+
+<h2>Bill Summary</h2>
+<p>Total Amount: ₹<span id="totalAmount">0</span></p>
+<p>GST (18%): ₹<span id="gstAmount">0</span></p>
+<p>Final Amount: ₹<span id="finalAmount">0</span></p>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>GST (18%)</th>
+            <th>Final Amount</th>
+        </tr>
+    </thead>
+    <tbody id="billItems">
+        <!-- Bill items will be dynamically added here -->
+    </tbody>
+</table>
+
+<!-- Proceed to Payment Button -->
+<div class="text-center mt-4">
+    <button id="proceedToPayment" class="btn btn-success">Proceed to Payment</button>
+</div>
+
+<script>
+    window.onload = function() {
+        // Retrieve cart data from localStorage
+        const cartData = JSON.parse(localStorage.getItem('cartData')) || {};
+
+        let totalAmount = 0;
+        let gstAmount = 0;
+        let finalAmount = 0;
+
+        const billItemsTable = document.getElementById('billItems');
+        Object.values(cartData).forEach(item => {
+            const row = document.createElement('tr');
+            const itemTotal = item.price * item.quantity;
+            const itemGst = itemTotal * 0.18;
+            const itemFinalAmount = itemTotal + itemGst;
+
+            totalAmount += itemTotal;
+            gstAmount += itemGst;
+            finalAmount += itemFinalAmount;
+
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>₹${item.price}</td>
+                <td>₹${itemTotal}</td>
+                <td>₹${itemGst}</td>
+                <td>₹${itemFinalAmount}</td>
+            `;
+            billItemsTable.appendChild(row);
+        });
+
+        // Update the total, GST, and final amount in the summary
+        document.getElementById('totalAmount').textContent = totalAmount;
+        document.getElementById('gstAmount').textContent = gstAmount;
+        document.getElementById('finalAmount').textContent = finalAmount;
+
+        // Proceed to Payment button event listener
+        document.getElementById('proceedToPayment').addEventListener('click', function () {
+            // Redirect to Payment Options page
+            window.location.href = 'Payment.html';
+        });
+    };
+</script>
+
+</body>
+</html>

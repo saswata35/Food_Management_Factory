@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reviews</title>
+    <link rel="stylesheet" href="styles10.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Restaurant Reviews</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Submit Review</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="header-overlay text-center text-white">
+            <h1>Welcome to Restaurant Reviews</h1>
+            <p>Discover the best dining experiences shared by our community.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <h2 class="text-center mb-4">Customer Reviews</h2>
+        <div id="reviewList" class="row">
+            <!-- Reviews will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Restaurant Reviews. All Rights Reserved.</p>
+            <p>
+                <a href="#" class="text-white me-3">Privacy Policy</a>
+                <a href="#" class="text-white">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Fetch all reviews from localStorage and display them
+        const reviewList = document.getElementById('reviewList');
+        const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+        if (reviews.length > 0) {
+            reviews.forEach(({ name, review, rating }) => {
+                const reviewCard = document.createElement('div');
+                reviewCard.classList.add('col-md-6', 'col-lg-4', 'mb-4');
+                reviewCard.innerHTML = `
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">${name}</h5>
+                            <p class="card-text">${review}</p>
+                            <p class="card-text"><strong>Rating:</strong> ${rating}/5</p>
+                        </div>
+                    </div>
+                `;
+                reviewList.appendChild(reviewCard);
+            });
+        } else {
+            reviewList.innerHTML = `
+                <div class="no-reviews col-12">
+                    <p>No reviews yet. Be the first to submit!</p>
+                </div>
+            `;
+        }
+
+        
+    </script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

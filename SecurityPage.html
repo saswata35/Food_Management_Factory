@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Page</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <main class="main-container">
+        <div class="security-container">
+            <div class="form-wrapper">
+                <!-- Login Section -->
+                <section id="login-section" class="form-container active">
+                    <h2 class="form-title">Login</h2>
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="login-username">Name:</label>
+                            <input type="text" id="login-username" name="NAME" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password:</label>
+                            <input type="password" id="login-password" name="PWD" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                    <p class="switch-text">Don't have an account? <a href="#" onclick="showSignup()">Sign up</a></p>
+                </section>
+
+                <!-- Signup Section -->
+                <section id="signup-section" class="form-container">
+                    <h2 class="form-title">Signup</h2>
+                    <form id="signupForm" onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label for="signup-name">Name:</label>
+                            <input type="text" id="signup-name" name="NAME" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email:</label>
+                            <input type="email" id="signup-email" name="EMAIL" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password:</label>
+                            <input type="password" id="signup-password" name="PWD" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-phone">Phone Number:</label>
+                            <input type="tel" id="signup-phone" name="PH_NO" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-address">Address:</label>
+                            <input type="text" id="signup-address" name="ADDRESS" placeholder="Enter your address" required>
+                        </div>
+                        <button type="submit" class="btn">Signup</button>
+                    </form>
+                    <p class="switch-text">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Show login section
+        function showLogin() {
+            document.getElementById('signup-section').classList.remove('active');
+            document.getElementById('login-section').classList.add('active');
+        }
+
+        // Show signup section
+        function showSignup() {
+            document.getElementById('login-section').classList.remove('active');
+            document.getElementById('signup-section').classList.add('active');
+        }
+
+        // Handle Login
+function handleLogin(event) {
+    event.preventDefault(); // Prevent form submission
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    // Check if username and password are entered
+    if (username && password) {
+        // Validate the credentials (Here, it's simulated as a simple condition)
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            const user = JSON.parse(storedUser);
+            // Check if entered username and password match the stored credentials
+            if (user.username === username && user.password === password) {
+                alert('Login successful!');
+                window.location.href = 'ConfirmationPage.html'; // Redirect to menu page
+            }
+        } else {
+            alert('No user found. Please sign up first.');
+        }
+    } else {
+        alert('Please enter both username and password.');
+    }
+}
+
+
+        // Handle Signup
+        function handleSignup(event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const phone = document.getElementById('signup-phone').value;
+            const address = document.getElementById('signup-address').value;
+
+            // Here you would send the data to the server to create a new account
+            if (username && email && password && phone && address) {
+                alert('Signup successful!');
+                showLogin(); // Redirect to login page after signup
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

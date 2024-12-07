@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alibaba Restaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header bg-dark text-white py-4">
+        <div class="container text-center">
+            <h1 class="display-4">Alibaba Restaurant</h1>
+            <nav class="navigation d-flex justify-content-center mt-3">
+                <button class="btn btn-nav" onclick="scrollToSection('about-us')">About Us</button>
+                <button class="btn btn-nav" onclick="scrollToSection('contact')">Contact</button>
+                <button class="btn btn-nav" onclick="scrollToSection('social-media')">Social Media</button>
+                <button class="btn btn-nav" onclick="window.location.href='SecurityPage.html'">Security</button>
+                <button class="btn btn-nav" onclick="window.location.href='Cust_Review.html'">Customer Review</button>
+                <button class="btn btn-nav" onclick="window.location.href='Rest_Review.html'">Restaurant Review</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section bg-primary text-white py-5">
+            <div class="container text-center">
+                <h2 class="display-4">Welcome to Alibaba Restaurant</h2>
+                <p class="lead">Your destination for exceptional food, great ambiance, and authentic flavors.</p>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about-us" class="about-us-section py-5">
+            <div class="container text-center">
+                <h3 class="section-title mb-4">About Us</h3>
+                <div class="about-us-content">
+                    <img src="images/Alibaba_Restaurant.jpg" alt="Restaurant Image" class="img-fluid rounded shadow mb-4">
+                    <p>Welcome to Alibaba Restaurant! We pride ourselves on providing delicious food and an unforgettable dining experience in a cozy and welcoming atmosphere.</p>
+                </div>
+
+                <div class="about-location-hours">
+                    <ul class="list-unstyled">
+                        <li><strong>Location:</strong> Kolkata, West Bengal, India</li>
+                        <li><strong>Open Hours:</strong> 10 AM - 11 PM (Every day)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="our-story py-5">
+            <div class="container text-center">
+                <h4>Our Story</h4>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="https://www.youtube.com/embed/4rGlk-dk9Ts" title="About Alibaba Restaurant" class="embed-responsive-item rounded shadow" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" height="300" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-info py-5">
+            <div class="container text-center">
+                <h3 class="section-title mb-4">Contact Information</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Name:</strong> Saswata Banerjee</li>
+                    <li><strong>Phone:</strong> 7439593227</li>
+                    <li><strong>Email:</strong> saswatabanerjee44@gmail.com</li>
+                    <li><strong>Address:</strong> 35/C/9, RAJA RAMMOHAN ROY SARANI, Kolkata</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section id="social-media" class="social-media py-5">
+            <div class="container text-center">
+                <h3 class="section-title mb-4">Follow Us on Social Media</h3>
+                <div class="social-media-buttons">
+                    <a href="https://www.facebook.com/alibabarestauranten/" class="social-button btn-facebook" target="_blank">Facebook</a>
+                    <a href="https://www.youtube.com/@Alibabarestaurantdongri" class="social-button btn-danger" target="_blank">YouTube</a>
+                    <a href="https://twitter.com/alibabascuisine" class="social-button btn-info" target="_blank">Twitter</a>
+                    <a href="https://www.instagram.com/alibabarestaurantlondon/" class="social-button btn-instagram" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer bg-dark text-white py-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Alibaba Restaurant. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function checkLoginAndRedirect(page) {
+            const isLoggedIn = sessionStorage.getItem('loggedIn');
+            if (isLoggedIn) {
+                window.location.href = page;
+            } else {
+                alert("Please log in to access this page.");
+                window.location.href = 'SecurityPage.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

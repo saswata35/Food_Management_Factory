@@ -1,0 +1,211 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;  /* Light background color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    color: #333;
+}
+
+/* Heading Style */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #2d2d2d;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 10px;
+}
+
+/* Cart Items Container */
+#cart-items {
+    width: 90%;
+    max-width: 1200px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Cart Item */
+.cart-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: #f1f1f1;
+    transform: translateY(-5px);
+}
+
+/* Cart Item Text Styling */
+.cart-item p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Item Price Highlight */
+.cart-item p strong {
+    color: #2a9d8f;
+}
+
+/* Remove Button */
+.cart-item button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-item button:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+/* Main Navigation Button (Go Back to Menu) */
+button {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px 3px rgba(76, 175, 80, 0.7);
+}
+
+/* Empty Cart Message */
+#cart-items p {
+    font-size: 1.2rem;
+    color: #888;
+    text-align: center;
+}
+
+/* Footer/Bottom Section */
+footer {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+/* Scrollable Cart Area */
+#cart-items {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+/* Card Shadows and Hover Effect */
+.cart-item {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.cart-item:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* New Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    #cart-items {
+        padding: 15px;
+        width: 100%;
+    }
+
+    .cart-item {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    button {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+
+    .cart-item p {
+        font-size: 1rem;
+    }
+}
+
+/* Desktop - Larger Screens */
+@media (min-width: 1024px) {
+    body {
+        padding: 50px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    #cart-items {
+        width: 80%;
+        max-width: 1000px;
+    }
+
+    .cart-item {
+        padding: 25px;
+    }
+
+    button {
+        font-size: 1.3rem;
+        padding: 14px 28px;
+    }
+}

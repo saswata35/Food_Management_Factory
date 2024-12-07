@@ -1,0 +1,27 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+header {
+    background-image: url('https://via.placeholder.com/1500x500'); /* Replace with a relevant image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+.header-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 3rem;
+}
+footer {
+    background-color: #343a40;
+    color: white;
+}
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.no-reviews {
+    color: #6c757d;
+    text-align: center;
+}
